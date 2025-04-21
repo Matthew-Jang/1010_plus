@@ -62,7 +62,7 @@ Some instructions interpret this differently based on operation.
 ## Input Format
 The read instruction accepts:
 
-- val <number> → store number as byte
+- val \<number\> → store number as byte
 
 - binary strings like 01010101
 
