@@ -28,7 +28,7 @@ OPCODES = {
     '1011': 'print',    # print (char or number)
     '1100': 'ldi',      # load immediate into register
     '1101': 'sti',      # store immediate into memory
-    '1110': 'loop',     # conditional loop jump
+    '1110': 'jmp',     # conditional loop jump
     '1111': 'read'      # user input read
 }
 
@@ -94,7 +94,7 @@ def execute_instruction(instr):
         labels[imm8] = pc
 
     # --- loop: if condition(r2) true, jump to labels[imm8] ---
-    elif cmd == 'loop':
+    elif cmd == 'jmp':
         # interpret register value as signed 8‑bit
         v = registers[r2]
         # if v & 0x80: v -= 0x100
@@ -137,11 +137,24 @@ def execute_instruction(instr):
 
     pc += 1
 
+def read_instruction(instr):
+    global pc
+    op = instr[:4]
+    label_tag = binary_to_int(instr[16:24])
+    if OPCODES.get(op) == "label":
+        labels[label_tag] = pc
+
+    pc += 1
+
 def run_program(instrs):
     global pc
+    while pc < len(instrs):
+        read_instruction(instrs[pc])
+
+    pc = 0
     while pc < len(instrs):
         execute_instruction(instrs[pc])
 
 if __name__ == "__main__":
-    prog = load_program("repeater.txt")
+    prog = load_program("examples/multiply.txt")
     run_program(prog)
