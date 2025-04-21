@@ -84,12 +84,13 @@ Program files (e.g., repeater.txt) are plain text files containing 24-bit binary
 
 0001 0001 0000 0000 0000 0000   ; ld r1, mem[0]
 1100 1100 0000 0000 0000 0101   ; ldi r3, 5
-...
-🛠️ Usage
-Add your binary instructions into a file (e.g. repeater.txt)
 
-Run the emulator:
-python3 emulator.py
+## Usage
+- Add your binary instructions into a file (e.g. repeater.txt).
+- Pass that filename into the "load_program" function
+- Run the emulator
+
+python3 1010+.py
 
 ## Notes
 All values are 8-bit (0–255); arithmetic wraps around.
