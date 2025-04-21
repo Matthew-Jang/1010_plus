@@ -1,4 +1,4 @@
-# my_machine_code
+# 1010+
 This project is a CPU emulator that interprets 24-bit binary instructions, based off of x86 Assembly and the SRC that you do in Computer Organization & Architecture at OC. It simulates basic CPU behavior with general-purpose registers, memory, labels, and simple I/O.
 
 ## Overview
